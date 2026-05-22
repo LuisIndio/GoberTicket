@@ -8,6 +8,7 @@ import { TicketsPage } from './pages/TicketsPage'
 import { TicketDetailPage } from './pages/TicketDetailPage'
 import { NewTicketPage } from './pages/NewTicketPage'
 import { UsersPage } from './pages/UsersPage'
+import { TrackingPage } from './pages/TrackingPage'
 
 const qc = new QueryClient({
   defaultOptions: { queries: { retry: 1, staleTime: 30_000 } }
@@ -50,6 +51,7 @@ export default function App() {
           <Route path="/users" element={
             <PrivateRoute roles={['Admin']}><UsersPage /></PrivateRoute>
           } />
+          <Route path="/seguimiento" element={<TrackingPage />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

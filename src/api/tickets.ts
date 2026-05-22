@@ -1,6 +1,6 @@
 import type { CreateTicketRequest } from '../types'
 import {
-  mockGetTickets, mockGetTicket, mockCreateTicket,
+  mockGetTickets, mockGetTicket, mockGetTicketByNumber, mockCreateTicket,
   mockUpdateTicketStatus, mockAssignTicket,
   mockGetComments, mockCreateComment,
   mockGetAttachments, mockUploadAttachment,
@@ -9,6 +9,7 @@ import {
 
 export const getTickets = () => mockGetTickets()
 export const getTicket = (id: number) => mockGetTicket(id)
+export const getTicketByNumber = (num: string) => mockGetTicketByNumber(num)
 export const createTicket = (data: CreateTicketRequest) => mockCreateTicket(data)
 export const updateTicketStatus = (id: number, status: number) => mockUpdateTicketStatus(id, status)
 export const assignTicket = (id: number, agentId: string, priority: number) => mockAssignTicket(id, agentId, priority)

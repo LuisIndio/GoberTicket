@@ -141,6 +141,14 @@ export async function mockGetTicket(id: number): Promise<TicketResponse> {
   return mapTicket(t, s)
 }
 
+export async function mockGetTicketByNumber(ticketNumber: string): Promise<TicketResponse> {
+  await wait()
+  const s = load()
+  const t = s.tickets.find(t => t.ticketNumber.toLowerCase() === ticketNumber.trim().toLowerCase())
+  if (!t) throw new Error('Ticket no encontrado.')
+  return mapTicket(t, s)
+}
+
 export async function mockCreateTicket(data: { title: string; description: string; priority?: number; category?: number; creatorName?: string; creatorEmail?: string }): Promise<TicketResponse> {
   await wait()
   const s = load()

@@ -104,21 +104,27 @@ export function NewTicketPage() {
             </p>
             <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap' }}>
               <button
-                onClick={() => { setSubmitted(null); setTitle(''); setDescription(''); setCreatorName(''); setCreatorEmail('') }}
+                onClick={() => navigate(`/seguimiento?ticket=${submitted.ticketNumber}`)}
                 style={{
                   padding: '11px 22px', borderRadius: '10px', fontSize: '13.5px', fontWeight: '600',
                   background: '#1a7040', border: 'none', color: '#fff', cursor: 'pointer',
                   boxShadow: '0 4px 12px rgba(26,112,64,0.3)',
+                  display: 'flex', alignItems: 'center', gap: '7px',
                 }}
               >
-                Enviar otro ticket
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+                </svg>
+                Hacer seguimiento
               </button>
-              <button onClick={() => navigate('/login')}
+              <button
+                onClick={() => { setSubmitted(null); setTitle(''); setDescription(''); setCreatorName(''); setCreatorEmail('') }}
                 style={{
                   padding: '11px 22px', borderRadius: '10px', fontSize: '13.5px',
                   background: '#ffffff', border: '1px solid #d1d5db', color: '#6b7280', cursor: 'pointer',
-                }}>
-                Iniciar sesión
+                }}
+              >
+                Enviar otro ticket
               </button>
             </div>
           </div>
@@ -146,6 +152,19 @@ export function NewTicketPage() {
         }}>
           <img src={logoLight} alt="Gobernación SCZ" style={{ height: '36px', width: 'auto' }} />
           <div style={{ flex: 1 }} />
+          <button
+            onClick={() => navigate('/seguimiento')}
+            style={{
+              padding: '8px 16px', borderRadius: '8px', fontSize: '12.5px', fontWeight: '500',
+              background: '#f0fdf4', border: '1px solid #bbf7d0', color: '#166534', cursor: 'pointer',
+              display: 'flex', alignItems: 'center', gap: '6px',
+            }}
+          >
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+            </svg>
+            Seguimiento
+          </button>
           <button
             onClick={() => navigate('/login')}
             style={{
