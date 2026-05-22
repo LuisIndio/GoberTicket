@@ -11,7 +11,7 @@ interface DemoUser {
 }
 interface DemoTicket {
   id: number; ticketNumber: string; title: string; description: string
-  status: string; priority: string; createdById: string | null
+  location: string; status: string; priority: string; createdById: string | null
   createdByName: string; creatorEmail: string | null; isAnonymous: boolean
   assignedToId: string | null; createdAt: string; updatedAt: string
 }
@@ -46,12 +46,12 @@ function getInitialStore(): DemoStore {
       { id: 'u4', fullName: 'Roberto Peña',         email: 'cliente@gobernacion.gob.bo',  password: 'Cliente123', role: 'Cliente', isActive: true, createdAt: daysAgo(20) },
     ],
     tickets: [
-      { id: 1, ticketNumber: 'TKT-00001', title: 'Error en sistema de facturación al imprimir boletas', description: 'Al intentar imprimir las boletas de pago del mes de mayo, el sistema arroja un error "Timeout connection" y no genera el PDF. Esto está afectando a todo el departamento de finanzas.', status: 'Atendido', priority: 'Alta', createdById: 'u4', createdByName: 'Roberto Peña', creatorEmail: null, isAnonymous: false, assignedToId: 'u2', createdAt: daysAgo(10), updatedAt: daysAgo(7) },
-      { id: 2, ticketNumber: 'TKT-00002', title: 'Impresora del área de RRHH no responde', description: 'La impresora HP LaserJet del área de Recursos Humanos dejó de funcionar. Muestra el error "Offline" aunque está encendida y conectada a la red local.', status: 'Asignado', priority: 'Media', createdById: 'u4', createdByName: 'Roberto Peña', creatorEmail: null, isAnonymous: false, assignedToId: 'u3', createdAt: daysAgo(5), updatedAt: daysAgo(4) },
-      { id: 3, ticketNumber: 'TKT-00003', title: 'Solicitud de actualización de Office 365', description: 'Necesitamos actualizar el paquete Microsoft Office en las 5 computadoras del área de Planificación. La versión actual es Office 2016 y necesitamos Office 365.', status: 'Creado', priority: 'Media', createdById: 'u4', createdByName: 'Roberto Peña', creatorEmail: null, isAnonymous: false, assignedToId: null, createdAt: daysAgo(3), updatedAt: daysAgo(3) },
-      { id: 4, ticketNumber: 'TKT-00004', title: 'No puedo acceder al correo institucional', description: 'Desde ayer no puedo ingresar al correo institucional. El sistema muestra "contraseña incorrecta" aunque estoy seguro de que es la correcta. Posiblemente expiró.', status: 'Creado', priority: 'Media', createdById: null, createdByName: 'Juan Carlos Ríos', creatorEmail: 'jrios@gmail.com', isAnonymous: true, assignedToId: null, createdAt: daysAgo(2), updatedAt: daysAgo(2) },
-      { id: 5, ticketNumber: 'TKT-00005', title: 'Sin internet en sala de reuniones piso 3', description: 'La sala de reuniones del piso 3 no tiene conexión a internet. Hay una reunión con autoridades mañana y se necesita conexión urgente para la presentación.', status: 'Rechazado', priority: 'Critica', createdById: 'u4', createdByName: 'Roberto Peña', creatorEmail: null, isAnonymous: false, assignedToId: 'u2', createdAt: daysAgo(8), updatedAt: daysAgo(6) },
-      { id: 6, ticketNumber: 'TKT-00006', title: 'Formateo y reinstalación de equipo — Contabilidad', description: 'La computadora del Lic. Torrez del área de Contabilidad tiene virus y está muy lenta. Se solicita formateo completo y reinstalación de Windows 10.', status: 'Asignado', priority: 'Baja', createdById: null, createdByName: 'Secretaría Contabilidad', creatorEmail: 'contabilidad@gob.bo', isAnonymous: true, assignedToId: 'u2', createdAt: daysAgo(6), updatedAt: daysAgo(5) },
+      { id: 1, ticketNumber: 'TKT-00001', title: 'Error en sistema de facturación al imprimir boletas', description: 'Al intentar imprimir las boletas de pago del mes de mayo, el sistema arroja un error "Timeout connection" y no genera el PDF. Esto está afectando a todo el departamento de finanzas.', location: 'Dirección de Finanzas — Piso 2', status: 'Atendido', priority: 'Alta', createdById: 'u4', createdByName: 'Roberto Peña', creatorEmail: null, isAnonymous: false, assignedToId: 'u2', createdAt: daysAgo(10), updatedAt: daysAgo(7) },
+      { id: 2, ticketNumber: 'TKT-00002', title: 'Impresora del área de RRHH no responde', description: 'La impresora HP LaserJet del área de Recursos Humanos dejó de funcionar. Muestra el error "Offline" aunque está encendida y conectada a la red local.', location: 'Dirección de RRHH — Piso 3', status: 'Asignado', priority: 'Media', createdById: 'u4', createdByName: 'Roberto Peña', creatorEmail: null, isAnonymous: false, assignedToId: 'u3', createdAt: daysAgo(5), updatedAt: daysAgo(4) },
+      { id: 3, ticketNumber: 'TKT-00003', title: 'Solicitud de actualización de Office 365', description: 'Necesitamos actualizar el paquete Microsoft Office en las 5 computadoras del área de Planificación. La versión actual es Office 2016 y necesitamos Office 365.', location: 'Dirección de Planificación — Piso 1', status: 'Creado', priority: 'Media', createdById: 'u4', createdByName: 'Roberto Peña', creatorEmail: null, isAnonymous: false, assignedToId: null, createdAt: daysAgo(3), updatedAt: daysAgo(3) },
+      { id: 4, ticketNumber: 'TKT-00004', title: 'No puedo acceder al correo institucional', description: 'Desde ayer no puedo ingresar al correo institucional. El sistema muestra "contraseña incorrecta" aunque estoy seguro de que es la correcta. Posiblemente expiró.', location: 'Secretaría General — Piso 1', status: 'Creado', priority: 'Media', createdById: null, createdByName: 'Juan Carlos Ríos', creatorEmail: 'jrios@gmail.com', isAnonymous: true, assignedToId: null, createdAt: daysAgo(2), updatedAt: daysAgo(2) },
+      { id: 5, ticketNumber: 'TKT-00005', title: 'Sin internet en sala de reuniones piso 3', description: 'La sala de reuniones del piso 3 no tiene conexión a internet. Hay una reunión con autoridades mañana y se necesita conexión urgente para la presentación.', location: 'Sala de Reuniones — Piso 3', status: 'Rechazado', priority: 'Critica', createdById: 'u4', createdByName: 'Roberto Peña', creatorEmail: null, isAnonymous: false, assignedToId: 'u2', createdAt: daysAgo(8), updatedAt: daysAgo(6) },
+      { id: 6, ticketNumber: 'TKT-00006', title: 'Formateo y reinstalación de equipo — Contabilidad', description: 'La computadora del Lic. Torrez del área de Contabilidad tiene virus y está muy lenta. Se solicita formateo completo y reinstalación de Windows 10.', location: 'Dirección de Contabilidad — Piso 2', status: 'Asignado', priority: 'Baja', createdById: null, createdByName: 'Secretaría Contabilidad', creatorEmail: 'contabilidad@gob.bo', isAnonymous: true, assignedToId: 'u2', createdAt: daysAgo(6), updatedAt: daysAgo(5) },
     ],
     comments: [
       { id: 1, ticketId: 1, text: 'Revisé el servidor de base de datos. El problema era una consulta sin índice que bloqueaba la conexión. Se aplicó el parche y ya funciona correctamente.', authorId: 'u2', authorName: 'Carlos Mendoza', createdAt: daysAgo(8) },
@@ -90,7 +90,8 @@ function mapTicket(t: DemoTicket, s: DemoStore): TicketResponse {
   const assignedUser = s.users.find(u => u.id === t.assignedToId) ?? null
   return {
     id: t.id, ticketNumber: t.ticketNumber, title: t.title,
-    description: t.description, status: t.status, priority: t.priority,
+    description: t.description, location: t.location,
+    status: t.status, priority: t.priority,
     category: 'General',
     createdById: t.createdById, createdByName: t.createdByName,
     creatorEmail: t.creatorEmail, isAnonymous: t.isAnonymous,
@@ -149,7 +150,7 @@ export async function mockGetTicketByNumber(ticketNumber: string): Promise<Ticke
   return mapTicket(t, s)
 }
 
-export async function mockCreateTicket(data: { title: string; description: string; priority?: number; category?: number; creatorName?: string; creatorEmail?: string }): Promise<TicketResponse> {
+export async function mockCreateTicket(data: { title: string; description: string; location: string; priority?: number; category?: number; creatorName?: string; creatorEmail?: string }): Promise<TicketResponse> {
   await wait()
   const s = load()
   const me = getCurrentUser()
@@ -157,7 +158,7 @@ export async function mockCreateTicket(data: { title: string; description: strin
   const ticket: DemoTicket = {
     id: s.ticketCounter,
     ticketNumber: `TKT-${String(s.ticketCounter).padStart(5, '0')}`,
-    title: data.title, description: data.description,
+    title: data.title, description: data.description, location: data.location ?? '',
     status: 'Creado', priority: 'Media',
     createdById: me?.userId ?? null,
     createdByName: me?.fullName ?? data.creatorName ?? 'Anónimo',

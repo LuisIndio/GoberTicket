@@ -642,6 +642,7 @@ export function TicketDetailPage() {
                     )}
                   </div>
                 ) },
+                { label: 'Ubicación', value: <span style={{ fontSize: '12px', color: ticket.location ? '#374151' : '#d1d5db', textAlign: 'right', display: 'block', maxWidth: '160px' }}>{ticket.location || '—'}</span> },
                 { label: 'Asignado a', value: <span style={{ fontSize: '12px', color: ticket.assignedToName ? '#374151' : '#d1d5db' }}>{ticket.assignedToName ?? '—'}</span> },
                 { label: 'Comentarios', value: <span style={{ fontSize: '12px', color: '#374151' }}>{comments.length}</span> },
                 { label: 'Adjuntos', value: <span style={{ fontSize: '12px', color: '#374151' }}>{attachments.length}</span> },

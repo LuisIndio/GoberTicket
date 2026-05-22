@@ -22,6 +22,7 @@ export function NewTicketPage() {
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
+  const [location, setLocation] = useState('')
   const [creatorName, setCreatorName] = useState('')
   const [creatorEmail, setCreatorEmail] = useState('')
   const [error, setError] = useState('')
@@ -29,7 +30,7 @@ export function NewTicketPage() {
 
   const mutation = useMutation({
     mutationFn: () => createTicket({
-      title, description,
+      title, description, location,
       ...(!isAuthenticated && { creatorName, creatorEmail }),
     }),
     onSuccess: (ticket) => {
@@ -46,7 +47,7 @@ export function NewTicketPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
-    if (!title.trim() || !description.trim()) { setError('El título y la descripción son obligatorios.'); return }
+    if (!title.trim() || !description.trim() || !location.trim()) { setError('El título, la descripción y la ubicación son obligatorios.'); return }
     if (!isAuthenticated && !creatorName.trim()) { setError('El nombre es obligatorio.'); return }
     mutation.mutate()
   }
@@ -118,7 +119,7 @@ export function NewTicketPage() {
                 Hacer seguimiento
               </button>
               <button
-                onClick={() => { setSubmitted(null); setTitle(''); setDescription(''); setCreatorName(''); setCreatorEmail('') }}
+                onClick={() => { setSubmitted(null); setTitle(''); setDescription(''); setLocation(''); setCreatorName(''); setCreatorEmail('') }}
                 style={{
                   padding: '11px 22px', borderRadius: '10px', fontSize: '13.5px',
                   background: '#ffffff', border: '1px solid #d1d5db', color: '#6b7280', cursor: 'pointer',
@@ -303,6 +304,16 @@ export function NewTicketPage() {
                 />
               </div>
 
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
+                <label style={{ fontSize: '13px', fontWeight: '500', color: '#374151' }}>
+                  Ubicación / Dirección / Secretaría <span style={{ color: '#dc2626' }}>*</span>
+                </label>
+                <input value={location} onChange={e => setLocation(e.target.value)}
+                  placeholder="Dirección DTI piso 1"
+                  required style={inputStyle}
+                  onFocus={focusStyle} onBlur={blurStyle} />
+              </div>
+
               {error && (
                 <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: '10px', padding: '11px 14px', fontSize: '13px', color: '#dc2626' }}>
                   {error}
@@ -392,6 +403,16 @@ export function NewTicketPage() {
               onFocus={focusStyle as unknown as React.FocusEventHandler<HTMLTextAreaElement>}
               onBlur={blurStyle as unknown as React.FocusEventHandler<HTMLTextAreaElement>}
             />
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
+            <label style={{ fontSize: '13px', fontWeight: '500', color: '#374151' }}>
+              Ubicación / Dirección / Secretaría <span style={{ color: '#dc2626' }}>*</span>
+            </label>
+            <input value={location} onChange={e => setLocation(e.target.value)}
+              placeholder="Dirección DTI piso 1"
+              required style={inputStyle}
+              onFocus={focusStyle} onBlur={blurStyle} />
           </div>
 
           {error && (

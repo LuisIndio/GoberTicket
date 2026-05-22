@@ -12,6 +12,7 @@ export interface TicketResponse {
   ticketNumber: string
   title: string
   description: string
+  location: string
   status: string
   priority: string
   category: string
@@ -30,6 +31,7 @@ export interface TicketResponse {
 export interface CreateTicketRequest {
   title: string
   description: string
+  location: string
   priority?: number
   category?: number
   creatorName?: string

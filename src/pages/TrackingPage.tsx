@@ -202,6 +202,12 @@ export function TrackingPage() {
               </p>
 
               <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', paddingTop: '14px', borderTop: '1px solid #f1f5f9' }}>
+                {ticket.location && (
+                  <div>
+                    <p style={{ fontSize: '10px', fontWeight: '600', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '3px' }}>Ubicación</p>
+                    <p style={{ fontSize: '12px', color: '#374151' }}>{ticket.location}</p>
+                  </div>
+                )}
                 <div>
                   <p style={{ fontSize: '10px', fontWeight: '600', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '3px' }}>Creado</p>
                   <p style={{ fontSize: '12px', color: '#374151' }}>{formatDate(ticket.createdAt)}</p>
